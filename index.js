@@ -3,6 +3,7 @@ import { promises as fs } from 'node:fs'
 import JSON5 from 'json5'
 import { Client, Intents } from 'discord.js'
 import jsus from '@482-utils/js'
+import startNotifications from './notification.js'
 
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
@@ -35,3 +36,5 @@ client.on('interactionCreate', async (interaction) => {
     await interaction.reply('pong')
   }
 })
+
+startNotifications(textChannels)
