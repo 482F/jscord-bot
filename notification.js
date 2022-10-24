@@ -29,7 +29,7 @@ async function sendByName(channels, name, message) {
   await Promise.all(
     channels
       .filter((channel) => channel.name === name)
-      .map((channel) => channel.send(message))
+      .map((channel) => channel.send(message).catch((e) => console.log(e)))
   )
 }
 
@@ -70,7 +70,7 @@ async function startNotification(notification, channels) {
     const message = await notification
       .func()
       .then(({ text }) => text)
-      .catch(() => null)
+      .catch((e) => console.log(e))
     if (message?.match(/\S/)) {
       console.log({ message })
       await sendByName(channels, notification.channel, message)
