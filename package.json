@@ -2,7 +2,8 @@
   "dependencies": {
     "@482-utils/js": "https://github.com/482F/482-js-utils",
     "discord.js": "^13.6.0",
-    "json5": "^2.2.1"
+    "json5": "^2.2.1",
+    "node-scraping": "https://github.com/482f/node-scraping"
   },
   "type": "module"
 }
