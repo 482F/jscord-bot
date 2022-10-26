@@ -91,9 +91,9 @@
     form-data "^3.0.0"
 
 "@types/node@*":
-  version "18.11.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.5.tgz#1bc94cf2f9ab5fe33353bc7c79c797dcc5325bef"
-  integrity sha512-3JRwhbjI+cHLAkUorhf8RnqUbFXajvzX4q6fMn5JwkgtuwfYtRQYI3u4V92vI6NJuTsbBQWWh3RZjFsuevyMGQ==
+  version "18.11.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.7.tgz#8ccef136f240770c1379d50100796a6952f01f94"
+  integrity sha512-LhFTglglr63mNXUSRYD8A+ZAIu5sFqNJ4Y2fPuY7UlrySJH87rRRlhtVmMHplmfk5WkoJGmDjE9oiTfyX94CpQ==
 
 "@types/ws@^8.2.2":
   version "8.5.3"
@@ -940,7 +940,7 @@ node-gyp@8.x:
 
 "node-scraping@https://github.com/482f/node-scraping":
   version "1.0.0"
-  resolved "https://github.com/482f/node-scraping#0124c0ccf822d5f63106aecf37c17b94ac8c40cf"
+  resolved "https://github.com/482f/node-scraping#2d31b26b1fb36eebb5606867f42d9b753a093d25"
   dependencies:
     "@482/js-utils" "https://github.com/482F/482-js-utils.git"
     jsdom "^20.0.1"
