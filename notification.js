@@ -63,15 +63,32 @@ const notifications = await Promise.all(
 
 async function startNotification(notification, channels) {
   while (true) {
-    const waitTime = Math.min(notification.date.map(calcWaitTime))
+    const waitTime = Math.min(...notification.date.map(calcWaitTime))
     await new Promise((resolve) => setTimeout(resolve, waitTime))
     const message = await notification
       .func()
       .then(({ text }) => text)
       .catch((e) => console.log(e))
+
+    ;(() => {
+      const date = new Date()
+      const df = (n) => n.toString().padStart(2, '0')
+      console.log(notification.module, {
+        date: `${date.getFullYear()}/${df(date.getMonth() + 1)}/${df(
+          date.getDate()
+        )} ${df(date.getHours())}:${df(date.getMinutes())}:${df(
+          date.getSeconds()
+        )}`,
+        message,
+        waitTime,
+        waitTimes: notification.date.map(calcWaitTime),
+      })
+    })()
+
     if (message?.match(/\S/)) {
-      console.log({ message })
-      await sendByName(channels, notification.channel, message)
+      for (const section of message.split('\n\n')) {
+        await sendByName(channels, notification.channel, section)
+      }
     }
   }
 }
