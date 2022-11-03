@@ -24,11 +24,22 @@ function calcWaitTime(dateStr) {
 }
 
 async function sendByName(channels, name, message) {
-  await Promise.all(
-    channels
-      .filter((channel) => channel.name === name)
-      .map((channel) => channel.send(message).catch((e) => console.log(e)))
-  )
+  const max = 1800
+  if (max < message?.length) {
+    const messages = []
+    for (let i = 0; i < message.length; i += max) {
+      messages.push(message.slice(i, i + max))
+    }
+    for (const part of messages) {
+      await sendByName(channels, name, part)
+    }
+  } else {
+    await Promise.all(
+      channels
+        .filter((channel) => channel.name === name)
+        .map((channel) => channel.send(message).catch((e) => console.log(e)))
+    )
+  }
 }
 
 const notifications = await Promise.all(
