@@ -8,8 +8,6 @@ function calcWaitTime(dateStr) {
   const current = new Date()
   const [currentH, currentMi] = [current.getHours(), current.getMinutes()]
 
-  function getTarget(n, currentN) {}
-
   const targetH = (() => {
     if (!Number.isNaN(h)) return h
     else if (mi <= currentMi) return currentH + 1
@@ -22,7 +20,7 @@ function calcWaitTime(dateStr) {
   })()
 
   const diff = (targetH - currentH) * 60 + (targetMi - currentMi)
-  return (0 <= diff ? diff : diff + 24 * 60) * 60 * 1000
+  return (0 < diff ? diff : diff + 24 * 60) * 60 * 1000
 }
 
 async function sendByName(channels, name, message) {
