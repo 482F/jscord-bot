@@ -27,7 +27,7 @@ function calcWaitTime(dateStr) {
   return ((0 < diff ? diff : diff + 24 * 60) * 60 - currentS) * 1000
 }
 
-async function sendByName(channels, name, message, { deletable = false } = {}) {
+async function sendByName(channels, name, message, options) {
   const max = 1800
   if (max < message?.length) {
     const messages = []
@@ -35,7 +35,7 @@ async function sendByName(channels, name, message, { deletable = false } = {}) {
       messages.push(message.slice(i, i + max))
     }
     for (const part of messages) {
-      await sendByName(channels, name, part)
+      await sendByName(channels, name, part, options)
     }
   } else {
     await Promise.all(
@@ -45,7 +45,7 @@ async function sendByName(channels, name, message, { deletable = false } = {}) {
           channel
             .send(message)
             .then((message) => {
-              if (deletable) return message.react('🍊')
+              if (options.deletable) return message.react('🍊')
             })
             .catch((e) => console.log(e))
         )
