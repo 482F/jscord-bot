@@ -6,7 +6,11 @@ import jsus from '@482-utils/js'
 import startNotifications from './notification.js'
 
 const client = new Client({
-  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+  intents: [
+    Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+  ],
 })
 
 const info = JSON5.parse(
@@ -35,6 +39,11 @@ client.on('interactionCreate', async (interaction) => {
   if (interaction.commandName === 'ping') {
     await interaction.reply('pong')
   }
+})
+
+client.on('messageReactionAdd', (reaction, user) => {
+  if (user.username === info.myName) return
+  if (reaction.emoji.name === '🍊') reaction.message.delete()
 })
 
 startNotifications(textChannels)
