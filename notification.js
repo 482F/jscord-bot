@@ -71,9 +71,25 @@ const notifications = await Promise.all(
       date: ['06:00'],
     },
     {
+      module: 'pso2-news',
+      channel: 'pso2-news',
+      date: ['06:00'],
+    },
+    {
+      module: 'pso2-wiki-zatsudan',
+      channel: 'pso2-wiki-zatsudan',
+      date: ['**:00', '**:30'],
+      deletable: true,
+    },
+    {
       module: 'pso2-emg',
       channel: 'pso2',
       date: ['**:06'],
+    },
+    {
+      module: 'pso2-ngs-emg',
+      channel: 'pso2',
+      date: ['**:16', '**:46'],
     },
   ].map(async (notification) => ({
     ...notification,

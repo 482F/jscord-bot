@@ -1,0 +1,6 @@
+{
+    token: 'discord_token',
+    twitterToken: 'twitter_token',
+    myName: 'bot_username',
+}
+
