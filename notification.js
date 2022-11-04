@@ -6,7 +6,11 @@ function calcWaitTime(dateStr) {
   const [h, mi] = [groups.h, groups.mi].map(Number)
 
   const current = new Date()
-  const [currentH, currentMi] = [current.getHours(), current.getMinutes()]
+  const [currentH, currentMi, currentS] = [
+    current.getHours(),
+    current.getMinutes(),
+    current.getSeconds(),
+  ]
 
   const targetH = (() => {
     if (!Number.isNaN(h)) return h
@@ -20,7 +24,7 @@ function calcWaitTime(dateStr) {
   })()
 
   const diff = (targetH - currentH) * 60 + (targetMi - currentMi)
-  return (0 < diff ? diff : diff + 24 * 60) * 60 * 1000
+  return ((0 < diff ? diff : diff + 24 * 60) * 60 - currentS) * 1000
 }
 
 async function sendByName(channels, name, message, { deletable = false } = {}) {
