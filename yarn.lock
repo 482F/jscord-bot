@@ -827,7 +827,7 @@ node-gyp@8.x:
 
 "node-scraping@https://github.com/482f/node-scraping":
   version "1.0.0"
-  resolved "https://github.com/482f/node-scraping#917c4442b0e04383ba63c00d57510659891aae68"
+  resolved "https://github.com/482f/node-scraping#af48a1b0e7562a3d82ca8dce23d3b2baa97f6a1b"
   dependencies:
     "@482/js-utils" "https://github.com/482F/482-js-utils.git"
     jsdom "^20.0.1"
@@ -1244,9 +1244,9 @@ ws@^8.4.0:
   integrity sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==
 
 ws@^8.9.0:
-  version "8.10.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.10.0.tgz#00a28c09dfb76eae4eb45c3b565f771d6951aa51"
-  integrity sha512-+s49uSmZpvtAsd2h37vIPy1RBusaLawVe8of+GyEPsaJTCMpj/2v8NpeK1SHXjBlQ95lQTmQofOJnFiLoaN3yw==
+  version "8.11.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.11.0.tgz#6a0d36b8edfd9f96d8b25683db2f8d7de6e8e143"
+  integrity sha512-HPG3wQd9sNQoT9xHyNCXoDUa+Xw/VevmY9FoHyQ+g+rrMn4j6FB4np7Z0OhdTgjx6MgQLK7jwSy1YecU1+4Asg==
 
 xml-name-validator@^4.0.0:
   version "4.0.0"
