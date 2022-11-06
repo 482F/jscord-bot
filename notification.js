@@ -23,7 +23,7 @@ function calcWaitTime(dateStr) {
   return (0 < diff ? diff : diff + 24 * 60) * 60 * 1000
 }
 
-async function sendByName(channels, name, message) {
+async function sendByName(channels, name, message, { deletable = false } = {}) {
   const max = 1800
   if (max < message?.length) {
     const messages = []
@@ -37,7 +37,14 @@ async function sendByName(channels, name, message) {
     await Promise.all(
       channels
         .filter((channel) => channel.name === name)
-        .map((channel) => channel.send(message).catch((e) => console.log(e)))
+        .map((channel) =>
+          channel
+            .send(message)
+            .then((message) => {
+              if (deletable) return message.react('🍊')
+            })
+            .catch((e) => console.log(e))
+        )
     )
   }
 }
@@ -98,7 +105,9 @@ async function startNotification(notification, channels) {
 
     if (message?.match(/\S/)) {
       for (const section of message.split('\n\n')) {
-        await sendByName(channels, notification.channel, section)
+        await sendByName(channels, notification.channel, section, {
+          deletable: notification.deletable,
+        })
       }
     }
   }
